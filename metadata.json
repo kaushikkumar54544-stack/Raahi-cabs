@@ -1,0 +1,5 @@
+{
+  "name": "Raahi Cabs",
+  "description": "A comprehensive cab booking and delivery platform with real-time tracking, OTP verification, and shared rides.",
+  "requestFramePermissions": ["geolocation"]
+}

@@ -1,0 +1,45 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "User profile information",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "phoneNumber": { "type": "string" },
+        "email": { "type": "string" },
+        "role": { "type": "string", "enum": ["admin", "user", "driver"] },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "phoneNumber", "role"]
+    },
+    "Ride": {
+      "title": "Ride",
+      "description": "Ride booking details",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "pickup": { "type": "string" },
+        "drop": { "type": "string" },
+        "vehicleType": { "type": "string", "enum": ["auto", "bike", "smallcab", "car"] },
+        "status": { "type": "string", "enum": ["pending", "accepted", "completed", "cancelled"] },
+        "isShared": { "type": "boolean" },
+        "isDelivery": { "type": "boolean" },
+        "timestamp": { "type": "number" },
+        "driverId": { "type": "string" },
+        "bonus": { "type": "number" }
+      },
+      "required": ["userId", "pickup", "drop", "vehicleType", "status", "timestamp"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "User profiles"
+    },
+    "/rides/{rideId}": {
+      "schema": "Ride",
+      "description": "Ride bookings"
+    }
+  }
+}
